@@ -258,6 +258,23 @@ WHERE
 /*
 -----------------------------2.g) Find all employees in the database who earn more than each employee of Small Bank Corporation
 */
+SELECT 
+    tbl_employee.employee_name
+FROM 
+     tbl_employee
+     INNER JOIN
+     tbl_works  ON tbl_employee.employee_name = tbl_works.employee_name
+WHERE 
+   tbl_works.salary > ALL (
+	                  SELECT
+	                        tbl_works.salary
+                          FROM tbl_works
+                               INNER JOIN
+	                       tbl_employee ON tbl_works.employee_name = tbl_employee.employee_name
+                               INNER JOIN
+	                       tbl_company ON tbl_works.company_name = tbl_company.company_name
+                         WHERE tbl_company.company_name = 'Small Bank Corporation'
+);
 
 
 /*
