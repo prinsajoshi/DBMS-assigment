@@ -215,33 +215,33 @@ WHERE
 */
 -- using sub query
 SELECT 
-    Tbl_manages.employee_name,
-    Tbl_manages.manager_name 
+    tbl_manages.employee_name,
+    tbl_manages.manager_name 
 FROM
-    Tbl_manages
+    tbl_manages
 WHERE
     (SELECT 
             tbl_employee.city
         FROM
-            Tbl_employee
+            tbl_employee
         WHERE
-            Tbl_employee.employee_name = Tbl_manages.manager_name) = (SELECT 
+            tbl_employee.employee_name = tbl_manages.manager_name) = (SELECT 
             tbl_employee.city
         FROM
-            Tbl_employee
+            tbl_employee
         WHERE
-            Tbl_employee.employee_name = Tbl_manages.employee_name)
+            tbl_employee.employee_name = tbl_manages.employee_name)
         AND (SELECT 
             tbl_employee.street
         FROM
-            Tbl_employee
+            tbl_employee
         WHERE
-            Tbl_employee.employee_name = Tbl_manages.manager_name) = (SELECT 
+            tbl_employee.employee_name = tbl_manages.manager_name) = (SELECT 
             tbl_employee.street
         FROM
-            Tbl_employee
+            tbl_employee
         WHERE
-            Tbl_employee.employee_name = Tbl_manages.employee_name);       
+            tbl_employee.employee_name = tbl_manages.employee_name);       
                 
 
 /*
